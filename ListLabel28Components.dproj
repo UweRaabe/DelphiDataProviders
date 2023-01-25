@@ -41,8 +41,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_UnitSearchPath>..\Sources\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_DcuOutput>..\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
         <GenPackage>true</GenPackage>
         <GenDll>true</GenDll>
         <DCC_E>false</DCC_E>
