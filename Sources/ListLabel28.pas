@@ -539,8 +539,10 @@ public
   Constructor Create(AOwner: TComponent); Override;
   destructor Destroy; Override;
 
-  Procedure Design;
-  Procedure Print;
+  procedure Design; overload;
+  procedure Design(WindowHandle: cmbtHWND); overload;
+  procedure Print; overload;
+  procedure Print(WindowHandle: cmbtHWND); overload;
   Procedure DoPreviewAndDrilldown( Wnd        : HWND;
                                    DrillDown   : Boolean;
                                    ProjectFile: String;
@@ -1868,7 +1870,18 @@ begin
 end;
 
 
-Procedure TListLabel28.Design;
+procedure TListLabel28.Design;
+var
+  WindowHandle: cmbtHWND;
+begin
+  if not (csDesigning in ComponentState) then
+    WindowHandle := Application.handle
+  else
+    WindowHandle := GetActiveWindow();
+  Design(WindowHandle);
+end;
+
+procedure TListLabel28.Design(WindowHandle: cmbtHWND);
 Var
   OldMaster : Boolean;
   i, err, currentId           : Integer;
@@ -1878,7 +1891,7 @@ Var
   LlProjectType: Integer;
   LlProjectTypeForFileDialog: Integer;
   ProjectFilename: TString;
-  WindowHandle: cmbtHWND;
+//  WindowHandle: cmbtHWND;
 
 begin
   DeclareLlXObjectsToLL;
@@ -1953,10 +1966,10 @@ begin
       LlProjectTypeForFileDialog := LlProjectType;
     end;
 
-    if not (csDesigning in ComponentState) then
-      WindowHandle := Application.handle
-    else
-      WindowHandle := GetActiveWindow();
+//    if not (csDesigning in ComponentState) then
+//      WindowHandle := Application.handle
+//    else
+//      WindowHandle := GetActiveWindow();
 
     ProjectFilename := FAutoProjectFile;
     if FAutoShowSelectFile then
@@ -2346,7 +2359,18 @@ Begin
 End;
 
 
-Procedure TListLabel28.Print;
+procedure TListLabel28.Print;
+var
+  WindowHandle: cmbtHWND;
+begin
+  if not (csDesigning in ComponentState) then
+    WindowHandle := Application.MainForm.Handle
+  else
+    WindowHandle := GetActiveWindow();
+  Print(WindowHandle);
+end;
+
+procedure TListLabel28.Print(WindowHandle: cmbtHWND);
 Var
   i: Integer;
   temp: Array [0 .. 255] of char;
@@ -2357,7 +2381,7 @@ Var
   DataProvider     : TDataSetDataProvider;
   LlProjectType: Integer;
   ProjectFilename: TString;
-  WindowHandle: cmbtHWND;
+//  WindowHandle: cmbtHWND;
 
 begin
   DeclareLlXObjectsToLL;
@@ -2382,10 +2406,10 @@ begin
 
     LlProjectType := TEnumTranslator.TranslateProjectType(FAutoProjectType);
 
-    if not (csDesigning in ComponentState) then
-      WindowHandle := Application.handle
-    else
-      WindowHandle := GetActiveWindow();
+//    if not (csDesigning in ComponentState) then
+//      WindowHandle := Application.handle
+//    else
+//      WindowHandle := GetActiveWindow();
 
     ProjectFilename := FAutoProjectFile;
     if FAutoShowSelectFile then
