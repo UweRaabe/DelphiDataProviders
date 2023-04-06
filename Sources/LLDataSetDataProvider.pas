@@ -540,7 +540,7 @@ begin
   FMemDataSet:=TFDMemTable.Create(nil);
   Try
      FDataSetInf.DataSet.Active:=True;
-     FMemDataSet.CopyDataSet(FDataSetInf.DataSet,[coStructure,coRestart, coAppend]);
+     FMemDataSet.CopyDataSet(FDataSetInf.DataSet,[coStructure, coCalcFields, coRestart, coAppend]);
   Except
      Exception.Create('Cannot open dataset '+TableName);
   End;
