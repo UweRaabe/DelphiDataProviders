@@ -432,8 +432,6 @@ private
   lpfnNtfyProc: TFarProc;
   FShowErrors: Boolean;
   FDataController: TLLDataController;
-  CurrentJobHandle: HJob;
-
   FPreviewCritSect : TCriticalSection;
   FDrillCritSect   : TCriticalSection;
 
@@ -451,6 +449,7 @@ private
   FExportOptions: TListLabelExportOptions;
 protected
 
+  CurrentJobHandle: HJob;
   Meta: TMetafile;
   FOnDefinePrintOptionsEvent: TDefinePrintOptionsEvent;
   FOnAutoDefineField: TAutoDefineFieldEvent;
