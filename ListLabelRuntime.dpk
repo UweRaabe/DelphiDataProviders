@@ -53,7 +53,8 @@ contains
   l28CommonInterfaces in 'Sources\l28CommonInterfaces.pas',
   LLPreview in 'Sources\LLPreview.pas',
   cmbtLL28x in 'Sources\cmbtLL28x.pas',
-  cmbtLS28x in 'Sources\cmbtLS28x.pas';
+  cmbtLS28x in 'Sources\cmbtLS28x.pas',
+  l28dom in 'Sources\l28dom.pas';
 
 end.
 
